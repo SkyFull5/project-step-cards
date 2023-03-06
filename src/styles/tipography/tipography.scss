@@ -38,12 +38,12 @@ p {
     font-family: 'Montserrat', 'sans-serif';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 24px;
     color: currentColor;
 
-    &.small {
-        font-size: 16px;
+    &.medium {
+        font-size: 20px;
     }
 
     &.big {

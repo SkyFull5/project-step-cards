@@ -1,3 +1,3 @@
 export const button = (title) => {
-  return `<button class="btn">${title}</button>`;
+  return `<button><p>${title}</p></button>`;
 };

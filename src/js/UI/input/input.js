@@ -1,3 +1,2 @@
-export const input = (type, placeholder) => {
-  return `<input type="${type}" placeholder="${placeholder}">`;
-};
+export const input = ({ type, placeholder, name }) =>
+  `<input type="${type}" placeholder="${placeholder}" name="${name}">`;

@@ -7,16 +7,8 @@ export class CreateVisit {
     }
 
     renderElement() {
-        const render = inputDefaultVisit
-            .map(item => {
-                if (item.type === 'dropdown') {
-                    return item.renderContent(item);
-                } else {
-                    return item.renderContent(item);
-                }
-            })
-            .join('');
-        return `<form id="form-create-visit">${render}</form>`;
+        const render = inputDefaultVisit.map(item => item.renderContent(item)).join('');
+        return `<form id='form-create-visit'>${render}</form>`;
     }
 
     renderInputDoctor(value) {
@@ -27,18 +19,12 @@ export class CreateVisit {
 
         const newInput = inputDoctorVisit.map(item => {
             if (item.value === value) {
-                return item.content.map(content => {
-                    if (content.type === 'text') {
-                        return content.renderContent(content);
-                    } else {
-                        return content.renderContent(content);
-                    }
-                });
+                return item.content.map(content => content.renderContent(content));
             }
         });
         const findingInputContent = newInput?.find(item => !!item)?.join('');
 
-        const newHtmlDoctorInput = !!findingInputContent ? `<div class="doctor-inputs">${findingInputContent}</div> ` : '';
+        const newHtmlDoctorInput = !!findingInputContent ? `<div class='doctor-inputs'>${findingInputContent}</div> ` : '';
 
         textArea.insertAdjacentHTML('beforebegin', newHtmlDoctorInput);
     }

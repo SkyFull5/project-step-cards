@@ -25,7 +25,7 @@ export const inputDoctorVisit = [
             },
             {
                 type: 'text',
-                name: 'NormalPressure',
+                name: 'normalPressure',
                 placeholder: 'Звичайний тиск',
                 renderContent: props => input(props),
             },

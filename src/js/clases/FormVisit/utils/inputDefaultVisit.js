@@ -70,7 +70,7 @@ export const inputDefaultVisit = [
     {
         type: 'text',
         name: 'fatherName',
-        placeholder: 'Ім' + "'" + 'я по батькові',
+        placeholder: "Ім'я по батькові",
         value: '',
         renderContent: props => input(props),
     },

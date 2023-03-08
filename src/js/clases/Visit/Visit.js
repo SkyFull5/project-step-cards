@@ -1,5 +1,5 @@
 import { input } from '../../UI/index.js';
-import { inputDefaultVisit } from '../CreateVisit/utils/inputDefaultVisit.js';
+import { inputDefaultVisit } from '../FormVisit/utils/inputDefaultVisit.js';
 
 export class Visit {
     constructor(props) {

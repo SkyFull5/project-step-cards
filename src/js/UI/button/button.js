@@ -1,3 +1,3 @@
-export const button = title => {
-    return `<button><p>${title}</p></button>`;
+export const button = ({ type, id, title }) => {
+    return `<button type='${type}' id='${id}'>${title}</button>`;
 };

@@ -40,10 +40,16 @@ export const inputDoctorVisit = [
                 value: '',
                 content: [
                     {
-                        value: 'Так',
+                        type: 'radio',
+                        value: 'true',
+                        name: 'CardiovascularDiseases',
+                        checked: '',
                     },
                     {
-                        value: 'Ні',
+                        type: 'radio',
+                        value: 'false',
+                        name: 'CardiovascularDiseases',
+                        checked: '',
                     },
                 ],
                 renderContent: props => checkbox(props),

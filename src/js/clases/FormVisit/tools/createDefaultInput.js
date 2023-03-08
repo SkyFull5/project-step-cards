@@ -4,10 +4,10 @@ export const createDefaultInput = (params = '') => {
     return inputDefaultVisit
         .map(item => {
             if (!!params) {
-                item.value = params[item?.name];
+                item.value = !!params[item?.name] ? params[item?.name] : '';
                 if (!!item?.dropdownContent) {
                     item?.dropdownContent.forEach(con => {
-                        if (con.value === params.doctor || params.urgency) {
+                        if (con.value === params.doctor || con.value === params.urgency) {
                             con.selected = 'selected';
                         }
                     });

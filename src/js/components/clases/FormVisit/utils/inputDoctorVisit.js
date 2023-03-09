@@ -37,18 +37,20 @@ export const inputDoctorVisit = [
                 title: 'Серцево-судинні захворювання',
                 name: 'CardiovascularDiseases',
                 value: '',
-                content: [
+                contentRadio: [
                     {
                         type: 'radio',
                         value: 'true',
+                        variant: 'Так',
                         name: 'CardiovascularDiseases',
                         checked: '',
                     },
                     {
                         type: 'radio',
                         value: 'false',
+                        variant: 'Ні',
                         name: 'CardiovascularDiseases',
-                        checked: '',
+                        checked: 'checked',
                     },
                 ],
                 renderContent: props => checkbox(props),

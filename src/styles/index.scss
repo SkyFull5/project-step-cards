@@ -4,3 +4,55 @@
 @import 'tipography/tipography';
 @import 'UI/UI';
 @import 'components/components';
+@import 'header/header';
+@import 'main/main';
+
+body {
+    position: relative;
+    z-index: -3;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    background-image: url('./src/assets/img/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 50px 0 92px;
+    position: relative;
+    z-index: -2;
+    overflow-y: hidden;
+
+    &:before {
+        width: 326px;
+        height: 280px;
+        content: '';
+        background-image: url('./src/assets/img/block-bg.png');
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        z-index: -1;
+    }
+
+    &:after {
+        width: 326px;
+        height: 280px;
+        content: '';
+        background-image: url('./src/assets/img/block-bg.png');
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: -1px;
+        right: 0;
+        transform: scaleX(-1);
+        z-index: -1;
+    }
+}
+#root {
+    max-width: 1280px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}

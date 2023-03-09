@@ -1,5 +1,4 @@
-import { input } from '../../../UI/index.js';
-import { checkbox } from '../../../components/index.js';
+import { checkbox, input } from '../../../../UI/index.js';
 
 export const inputDoctorVisit = [
     {
@@ -9,36 +8,47 @@ export const inputDoctorVisit = [
                 type: 'text',
                 name: 'age',
                 placeholder: 'Вік',
+                value: '',
                 renderContent: props => input(props),
             },
             {
                 type: 'text',
                 name: 'bodyMassIndex',
                 placeholder: 'Індекс маси тіла',
+                value: '',
                 renderContent: props => input(props),
             },
             {
                 type: 'text',
                 name: 'chooseDoctor',
                 placeholder: 'Оберіть педіатра',
+                value: '',
                 renderContent: props => input(props),
             },
             {
                 type: 'text',
                 name: 'normalPressure',
                 placeholder: 'Звичайний тиск',
+                value: '',
                 renderContent: props => input(props),
             },
             {
                 type: 'radio',
                 title: 'Серцево-судинні захворювання',
                 name: 'CardiovascularDiseases',
+                value: '',
                 content: [
                     {
-                        value: 'Так',
+                        type: 'radio',
+                        value: 'true',
+                        name: 'CardiovascularDiseases',
+                        checked: '',
                     },
                     {
-                        value: 'Ні',
+                        type: 'radio',
+                        value: 'false',
+                        name: 'CardiovascularDiseases',
+                        checked: '',
                     },
                 ],
                 renderContent: props => checkbox(props),
@@ -51,7 +61,9 @@ export const inputDoctorVisit = [
         content: [
             {
                 type: 'text',
+                name: 'age',
                 placeholder: 'Вік',
+                value: '',
                 renderContent: props => input(props),
             },
         ],
@@ -62,6 +74,8 @@ export const inputDoctorVisit = [
             {
                 type: 'text',
                 placeholder: 'Дата останнього відвідування',
+                name: 'dataLastVisit',
+                value: '',
                 renderContent: props => input(props),
             },
         ],

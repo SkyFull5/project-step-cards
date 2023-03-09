@@ -1,1 +1,1 @@
-export { FormVisit, Modal } from './clases';
+export { Modal, FormVisit } from './clases';

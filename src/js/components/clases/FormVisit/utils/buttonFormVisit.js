@@ -6,15 +6,17 @@ export const buttonFormVisit = [
         buttons: [
             {
                 type: 'submit',
-                id: 'form-submit',
+                id: 'button-submit',
                 title: 'Створити',
                 disabled: 'disabled',
+                style: 'submit',
                 renderContent: props => button(props),
             },
             {
                 type: 'submit',
-                id: 'form-close',
+                id: 'button-close',
                 title: 'Скасувати',
+                style: 'close',
                 renderContent: props => button(props),
             },
         ],
@@ -24,15 +26,17 @@ export const buttonFormVisit = [
         buttons: [
             {
                 type: 'submit',
-                id: 'form-submit',
+                id: 'button-submit',
                 title: 'Зберегти',
                 disabled: 'disabled',
+                style: 'submit',
                 renderContent: props => button(props),
             },
             {
                 type: 'submit',
-                id: 'form-close',
+                id: 'button-close',
                 title: 'Скасувати',
+                style: 'close',
                 renderContent: props => button(props),
             },
         ],

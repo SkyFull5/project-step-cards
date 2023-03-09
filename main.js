@@ -1,4 +1,4 @@
 import './style.scss';
-import { test, testFunc } from './src/js/index.js';
+import { test } from './src/js/components/index.js';
 
 test();

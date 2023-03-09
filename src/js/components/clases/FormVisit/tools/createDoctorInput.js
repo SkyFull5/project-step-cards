@@ -6,7 +6,7 @@ export const createDoctorInput = ({ doctor = '', params = '', value }) => {
             if (item.value === (doctor || value)) {
                 return item.content.map(content => {
                     if (!!params) {
-                        content.value = params[content?.name];
+                        content.value = params[content?.name] || '';
 
                         if (content.type === 'radio') {
                             content.content.forEach(changeChecked => {

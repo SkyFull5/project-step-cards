@@ -1,5 +1,4 @@
-import { input } from '../../../UI/index.js';
-import { checkbox } from '../../../components/index.js';
+import { checkbox, input } from '../../../../UI/index.js';
 
 export const inputDoctorVisit = [
     {

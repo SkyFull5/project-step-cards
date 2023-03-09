@@ -1,4 +1,4 @@
-import { dropdown, input, textarea } from '../../../UI/index.js';
+import { dropdown, input, textarea } from '../../../../UI/index.js';
 
 export const inputDefaultVisit = [
     {

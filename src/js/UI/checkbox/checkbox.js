@@ -1,4 +1,4 @@
-import { input } from '../../UI/index.js';
+import { input } from '../index.js';
 
 export const checkbox = props => {
     const { title, content } = props;

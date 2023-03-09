@@ -35,7 +35,7 @@ export class FormVisit {
         });
     }
 
-    removeCreateVisitForm(idForm) {
+    removeElement(idForm) {
         const form = document.querySelector(`#${idForm}`);
         form.remove();
     }

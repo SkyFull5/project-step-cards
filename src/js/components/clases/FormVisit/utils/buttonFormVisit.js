@@ -1,4 +1,4 @@
-import { button } from '../../../UI/index.js';
+import { button } from '../../../../UI/index.js';
 
 export const buttonFormVisit = [
     {

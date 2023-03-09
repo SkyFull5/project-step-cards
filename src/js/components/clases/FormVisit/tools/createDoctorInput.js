@@ -7,11 +7,13 @@ export const createDoctorInput = ({ doctor = '', params = '', value }) => {
                 return item.content.map(content => {
                     if (!!params) {
                         content.value = params[content?.name] || '';
-
+                        //
                         if (content.type === 'radio') {
-                            content.content.forEach(changeChecked => {
+                            content.contentRadio.forEach(changeChecked => {
                                 if (content.value === changeChecked.value) {
                                     changeChecked.checked = 'checked';
+                                } else {
+                                    changeChecked.checked = '';
                                 }
                             });
                         }

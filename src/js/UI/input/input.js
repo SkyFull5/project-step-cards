@@ -1,2 +1,5 @@
-export const input = ({ type, placeholder, name, value, checked }) => `
-<input type="${type}" placeholder="${placeholder}" name="${name}" value="${value || ''}" ${checked || ''}>`;
+export const input = ({ type, placeholder, name, value, checked }) => {
+    const placeholderInput = type !== 'radio' ? `placeholder="${placeholder}"` : '';
+
+    return `<input type="${type}" ${placeholderInput} name="${name}" value="${value || ''}" ${checked || ''}>`;
+};

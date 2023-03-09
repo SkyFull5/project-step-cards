@@ -8,6 +8,7 @@ export const buttonFormVisit = [
                 type: 'submit',
                 id: 'form-submit',
                 title: 'Створити',
+                disabled: 'disabled',
                 renderContent: props => button(props),
             },
             {
@@ -25,6 +26,7 @@ export const buttonFormVisit = [
                 type: 'submit',
                 id: 'form-submit',
                 title: 'Зберегти',
+                disabled: 'disabled',
                 renderContent: props => button(props),
             },
             {

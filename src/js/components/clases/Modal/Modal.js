@@ -1,7 +1,8 @@
+import {modalHeaders} from '../../../utils/const.js';
+
 export class Modal {
     ANIMATION_SPEED = 200;
     closing = false;
-    destroyed = false;
     modal = document.createElement('div')
 
     constructor(options) {
@@ -15,13 +16,13 @@ export class Modal {
         this._listener = (e) => {
             if (e.target.dataset.close) {
                 this.close();
-            };
+            }
         }
     }
     open() {
-        if (this.destroyed) {
-            return console.log('Modal is destroyed');
-        }
+        // if (this.destroyed) {
+        //     return console.log('Modal is destroyed');
+        // }
         !this.closing && this.modal.classList.add('open');
     }
 
@@ -40,11 +41,22 @@ export class Modal {
 
     destroy() {
         this.modal.parentNode.removeChild(this.modal);
-        this.destroyed = true;
+        console.log('destroyed');
+        // this.destroyed = true;
     }
 
+    setModal (type = 'create-visit', html) {
+        this.setTitle(type);
+        this.setContent(html);
+    }
     setContent(html) {
         this.modal.querySelector('[data-content]').innerHTML = html;
+    }
+    setTitle(type = 'create') {
+        this.modal.querySelector('.modal-header').innerHTML = `
+            <h4 class="modal-title">${modalHeaders[type].title || 'Окно'}</h4>
+          ${modalHeaders[type].closable ? `<span class="modal-close" data-close="true">&times;</span>` : ''}
+        `
     }
 
     _createModal() {
@@ -83,7 +95,6 @@ export class Modal {
             btn.type && button.setAttribute('type', `${btn.type}`)
             const voidF = () => {};
             button.onclick = btn.handler || voidF;
-
             wrap.append(button);
         });
         return wrap;

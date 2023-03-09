@@ -1,9 +1,9 @@
 import { input } from '../index.js';
 
 export const checkbox = props => {
-    const { title, content } = props;
+    const { title, contentRadio } = props;
 
-    const inputs = content.map(item => `<label>${item.value}${input(item)}</label>`).join('');
+    const inputs = contentRadio.map(item => `<label>${item.variant}${input(item)}</label>`).join('');
 
-    return `<label>${title}${inputs}</label>`;
+    return `<div>${title}${inputs}</div>`;
 };

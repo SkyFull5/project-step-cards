@@ -1,4 +1,4 @@
 import './style.scss';
-import { test } from './src/js/components/index.js';
+import { test } from './src/js/index.js';
 
 test();

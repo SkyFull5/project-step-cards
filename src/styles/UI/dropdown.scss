@@ -1,4 +1,4 @@
-.input {
+.dropdown {
     width: 100%;
     font-style: normal;
     font-weight: 400;
@@ -13,7 +13,7 @@
     border: none;
     cursor: pointer;
 
-    &::placeholder {
-        color: rgba(204, 131, 37, 0.5);
+    & option {
+        font-size: 20px;
     }
 }

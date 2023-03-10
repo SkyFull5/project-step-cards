@@ -1,2 +1,3 @@
-export { FormVisit } from './clases/FormVisit/FormVisit';
-export { Modal } from './clases/Modal/Modal';
+export { Modal, FormVisit } from './clases';
+export { Header } from './header';
+export { Main } from './main';

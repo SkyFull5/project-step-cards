@@ -1,20 +1,20 @@
 import { createButton, createDefaultInput, createDoctorInput } from './tools/index.js';
 
 export class FormVisit {
-    constructor(doctor = '', params = '', id) {
+    constructor({ doctor = '', params = '', id }) {
         this.id = id;
         this.doctor = doctor;
         this.params = params;
     }
 
-    renderElement(idForm) {
+    renderElement() {
         const doctorInput = createDoctorInput({ doctor: this.doctor, params: this.params });
 
         const renderInput = createDefaultInput(this.params);
 
-        const renderButton = createButton(idForm);
+        const renderButton = createButton(this.id);
 
-        return `<form id='${idForm}'>${renderInput}${doctorInput}${renderButton}</form>`;
+        return `<form class='form-visit' id='${this.id}'>${renderInput}${doctorInput}${renderButton}</form>`;
     }
 
     renderInputDoctor(value) {
@@ -28,15 +28,26 @@ export class FormVisit {
         textAreaInForm.insertAdjacentHTML('beforebegin', renderDoctorInput);
     }
 
-    observerChooseDoctor() {
+    observerForm() {
         const doctorInputs = document.querySelector('#choose-doctor');
         doctorInputs.addEventListener('change', e => {
             this.doctor = e.target.value;
         });
+        this.observerButtonDisabled();
     }
 
-    removeElement(idForm) {
-        const form = document.querySelector(`#${idForm}`);
+    observerButtonDisabled() {
+        const form = document.querySelector(`#${this.id}`);
+        const button = document.querySelector('#button-submit');
+
+        form.addEventListener('keydown', () => {
+            const res = [...form].filter(item => item.tagName !== 'BUTTON').filter(item => !item.value);
+            button.disabled = res[0];
+        });
+    }
+
+    removeElement() {
+        const form = document.querySelector(`#${this.id}`);
         form.remove();
     }
 }

@@ -1,0 +1,35 @@
+.form-visit {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+
+    & .wrapper-button {
+        grid-column: 1 / 3;
+        margin-top: 10px;
+    }
+
+    & textarea {
+        grid-column: 1 / 3;
+    }
+}
+
+.doctor-inputs {
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    & :last-child {
+        grid-column: 1 / 3;
+    }
+}
+
+.wrapper-radio {
+    display: flex;
+    justify-content: space-between;
+    color: $text-secondary;
+
+    .radio-variant {
+        display: flex;
+    }
+}

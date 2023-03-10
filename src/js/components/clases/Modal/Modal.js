@@ -1,12 +1,12 @@
-import {modalHeaders} from '../../../utils/const.js';
+import {modalHeaders} from './tools/modalHeaders';
 
 export class Modal {
     ANIMATION_SPEED = 200;
     closing = false;
     modal = document.createElement('div')
 
-    constructor(options) {
-        this.title = options.title;
+    constructor(options = {}) {
+        this.title = options.title ?? '';
         this.closable = options.closable;
         this.width = options.width;
         this.content = options.content;
@@ -33,16 +33,15 @@ export class Modal {
         setTimeout(() => {
             this.modal.classList.remove('hide');
             this.closing = false;
-            if (typeof this.onClose === 'function') {
-                this.onClose();
-            }
+            // if (typeof this.onClose === 'function') {
+            //     this.onClose();
+            // }
+            this.destroy();
         }, this.ANIMATION_SPEED);
     }
 
     destroy() {
         this.modal.parentNode.removeChild(this.modal);
-        console.log('destroyed');
-        // this.destroyed = true;
     }
 
     setModal (type = 'create-visit', html) {

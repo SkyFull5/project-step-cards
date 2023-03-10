@@ -7,7 +7,7 @@ export const modalHeaders = {
         title: 'Редагувати картку',
         closable: false
     },
-    show: {
+    'show-info': {
         title: 'Детальна інформація',
         closable: true
     },

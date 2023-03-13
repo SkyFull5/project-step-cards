@@ -1,7 +1,6 @@
-import {Modal} from '../../Modal/Modal.js';
+import {Modal} from '../../clases/index.js';
 
-export const editCard = (e) => {
-    const id = e.target.dataset.id;
+export const editCard = (id) => {
     const modal = new Modal( {
         title: 'test',
     });

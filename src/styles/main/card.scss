@@ -1,78 +1,70 @@
-.cards-list-wrapper {
-    color: white;
-    padding: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
 .card {
-    background-color: $background-primary;
-    width: 198px;
-    height: max-content;
-    padding: 10px 15px;
-    color: $text-secondary;
-    border-radius: 20px;
-    position: relative;
+  background-color: $background-primary;
+  width: 198px;
+  height: max-content;
+  padding: 10px 15px;
+  color: $text-secondary;
+  border-radius: 20px;
+  position: relative;
 }
 
 .card-options {
-    left: 100%;
-    top: 24px;
-    width: 23px;
-    position: absolute;
-    padding: 8px 0;
-    background-color: $background-primary;
-    border-radius: 0 10px 10px 0;
-    border-style: solid;
-    border-width: 1px 1px 1px 0;
-    border-color: $background-secondary;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 7px;
+  left: 100%;
+  top: 24px;
+  width: 23px;
+  position: absolute;
+  padding: 8px 0;
+  background-color: $background-primary;
+  border-radius: 0 10px 10px 0;
+  border-style: solid;
+  border-width: 1px 1px 1px 0;
+  border-color: $background-secondary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
 }
 
 .card-option {
-    height: 17px;
-    width: 17px;
-    cursor: pointer;
+  height: 17px;
+  width: 17px;
+  cursor: pointer;
 
-    &:hover {
-        transform: scale(1.1);
-    }
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .card-title {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    margin-bottom: 15px;
-    user-select: none;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 15px;
+  user-select: none;
 }
 
 .card-body {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
-    span {
-        text-decoration: underline;
-        text-underline-offset: 3px;
-        user-select: none;
-    }
+  span {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    user-select: none;
+  }
 }
 
-.card-footer {
+  .card-footer {
     button {
-        padding: 10px 6px;
+      padding: 10px 6px;
     }
 
     button p {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        user-select: none;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      user-select: none;
     }
-}
+  }

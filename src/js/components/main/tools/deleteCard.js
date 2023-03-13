@@ -1,7 +1,6 @@
-import {fetchDeleteCard} from '../../../../tools/index.js';
+import {fetchDeleteCard} from '../../../tools/index.js';
 
-export const deleteCard = async (e) => {
-    const id = e.target.dataset.id;
+export const deleteCard = async (id) => {
     try {
         const result = await fetchDeleteCard(id);
 

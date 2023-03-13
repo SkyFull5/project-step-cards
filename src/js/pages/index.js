@@ -1,12 +1,12 @@
 import { HomePage } from './HomePage/index.js';
 import { LoginPage } from './LoginPage/index.js';
 
-export const mainPage = () => {
+export const mainPage = async () => {
     const isAuth = window.localStorage.getItem('token');
 
     if (isAuth) {
-        HomePage();
+        await HomePage();
     } else {
-        LoginPage();
+        await LoginPage();
     }
 };

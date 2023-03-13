@@ -8,7 +8,7 @@ export class FormVisit {
     }
 
     renderElement() {
-        const doctorInput = createDoctorInput({ doctor: this.doctor, params: this.params });
+        const doctorInput = !!this.params && createDoctorInput({ doctor: this.doctor, params: this.params });
 
         const renderInput = createDefaultInput(this.params);
 
@@ -31,6 +31,7 @@ export class FormVisit {
     observerForm() {
         const doctorInputs = document.querySelector('#choose-doctor');
         doctorInputs.addEventListener('change', e => {
+            this.renderInputDoctor(e.target.value);
             this.doctor = e.target.value;
         });
         this.observerButtonDisabled();

@@ -4,7 +4,7 @@ export const createDefaultInput = (params = '') => {
     return inputDefaultVisit
         .map(item => {
             if (!!params) {
-                item.value = params[item?.name] || '';
+                item.value = params[item?.name];
                 if (!!item?.dropdownContent) {
                     item?.dropdownContent.forEach(con => {
                         if (con.value === params.doctor || con.value === params.urgency) {
@@ -12,6 +12,8 @@ export const createDefaultInput = (params = '') => {
                         }
                     });
                 }
+            } else {
+                item.value = '';
             }
 
             return item.renderContent(item);

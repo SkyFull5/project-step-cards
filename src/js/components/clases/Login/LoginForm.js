@@ -53,7 +53,7 @@ export class LoginForm {
         [...event.target.elements].forEach(item => (formField[item.name] = item.value));
         const login = await fetchLogin(formField.email, formField.password);
         if (login.status === 200) {
-            mainPage();
+            await mainPage();
         }
         this.removeElement();
     }

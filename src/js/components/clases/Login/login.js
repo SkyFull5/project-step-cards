@@ -1,12 +1,10 @@
 import {
-  button
-} from '.UI/button/button.js';
-import {
+  button,
   input
-} from '.UI/input/input.js';
-
-import fetch from '.tools/fetch/fetch.js';
-import fetchLogin from '.tools/fetch/fetchLogin.js';
+} from '../../../UI/index.js';
+import {
+  fetchLogin
+} from '../../../tools/index.js';
 
 export class Login {
   constructor() {
@@ -20,9 +18,20 @@ export class Login {
   }
 
   async renderElement() {
-    this.emailInput = input("email", "email", "email");
-    this.passwordInput = input("password", "password", "password");
-    this.submitButton = button("submit", "Логин");
+    this.emailInput = input({
+      type: "email",
+      placeholder: "email",
+      name: "email"
+    });
+    this.passwordInput = input({
+      type: "password",
+      placeholder: "password",
+      name: "password"
+    });
+    this.submitButton = button({
+      type: "submit",
+      title: "Логин"
+    });
     this.form = document.createElement("form");
     this.form.id = "form-login";
     this.form.innerHTML = `${this.emailInput}${this.passwordInput}${this.submitButton}`;
@@ -45,13 +54,11 @@ export class Login {
     event.preventDefault();
     const formField = {};
     [...event.target.elements].forEach((item) => (formField[item.name] = item.value));
-    await fetchLogin(formField.email, formField.password);
-
+    const login = await fetchLogin(formField.email, formField.password);
+    if (login.status === 200) {
+      mainPage();
+    }
     this.removeElement();
   }
 }
 
-const login = new Login();
-login.renderElement().then((element) => {
-  document.body.append(element);
-});

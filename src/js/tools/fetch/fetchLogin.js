@@ -10,5 +10,6 @@ export const fetchLogin = async (email, password) => {
     if (login.status === 200) {
         window.localStorage.setItem('token', login.res);
     }
+    return login;
     // TODO если не тогда модалка еррора
 };

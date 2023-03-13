@@ -1,8 +1,7 @@
-import {createCardForm} from './tools/index.js';
+import { createCardForm } from './tools/index.js';
 
 export class Card {
-
-    card = document.createElement('div')
+    card = document.createElement('div');
 
     constructor(patient) {
         this.id = patient.id;
@@ -12,11 +11,10 @@ export class Card {
         this.doctor = patient.doctor;
     }
     render() {
-        const name = `${this.secondName} ${this.firstName[0]}.${this.fatherName[0]}`
+        const name = `${this.secondName} ${this.firstName[0]}.${this.fatherName[0]}`;
         this.card.classList.add('card');
         this.card.setAttribute('data-card-id', this.id);
         this.card.innerHTML = createCardForm(name, this.doctor, this.id);
         return this.card;
     }
-
 }

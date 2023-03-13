@@ -1,4 +1,4 @@
 import './style.scss';
-import {test} from './src/js/index.js';
+import { mainPage } from './src/js/pages/index.js';
 
-test()
+mainPage();

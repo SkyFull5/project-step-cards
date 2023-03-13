@@ -6,7 +6,7 @@ export const Header = () => {
         ${logo()}
     </div>
     <div class="wrapper-button">
-        ${button({ type: 'submit', id: 'create-visit', style: 'submit', title: 'Створити візит' })}
+        ${button({ type: 'submit', id: 'create-visit-button', style: 'submit', title: 'Створити візит' })}
     </div>
 </header>`;
 };

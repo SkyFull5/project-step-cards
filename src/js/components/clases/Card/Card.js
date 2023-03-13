@@ -1,8 +1,8 @@
-import {doctors, showInfo, options} from './tools/index.js';
+import { doctors, showInfo, options } from './tools/index.js';
 
 export class Card {
     CARD_TITLE = 'Картка пацієнта';
-    card = document.createElement('div')
+    card = document.createElement('div');
 
     constructor(patient) {
         this.id = patient.id;
@@ -12,7 +12,7 @@ export class Card {
         this.doctor = patient.doctor;
     }
     render() {
-        const name = `${this.secondName} ${this.firstName[0]}.${this.fatherName[0]}`
+        const name = `${this.secondName} ${this.firstName[0]}.${this.fatherName[0]}`;
         this.card.classList.add('card');
         this.card.setAttribute('data-card-id', this.id);
         this.card.innerHTML = `
@@ -26,30 +26,30 @@ export class Card {
             </div>
             <div class="card-footer">
             </div>
-        `
-        this.card.querySelector('.card-footer').insertAdjacentElement('afterbegin', this.createButton())
+        `;
+        this.card.querySelector('.card-footer').insertAdjacentElement('afterbegin', this.createButton());
         const check = this.createOptions();
-        check.forEach(elem => this.card.querySelector('.card-options').insertAdjacentElement('afterbegin', elem))
+        check.forEach(elem => this.card.querySelector('.card-options').insertAdjacentElement('afterbegin', elem));
 
         return this.card;
     }
 
-    createOptions () {
-        return options.map( option => {
+    createOptions() {
+        return options.map(option => {
             const optionElem = document.createElement('div');
             optionElem.classList.add(option.option);
             optionElem.setAttribute('data-id', this.id);
-            optionElem.textContent = option.option
-            optionElem.addEventListener('click', option.handler)
-            return optionElem
-        })
+            optionElem.textContent = option.option;
+            optionElem.addEventListener('click', option.handler);
+            return optionElem;
+        });
     }
     createButton() {
         const button = document.createElement('button');
         button.setAttribute('data-action', 'show-info');
-        button.setAttribute('data-id', this.id)
-        button.textContent = 'Показати більше'
-        button.addEventListener('click', showInfo)
+        button.setAttribute('data-id', this.id);
+        button.textContent = 'Показати більше';
+        button.addEventListener('click', showInfo);
         return button;
     }
 }

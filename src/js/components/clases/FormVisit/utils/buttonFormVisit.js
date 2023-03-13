@@ -13,7 +13,7 @@ export const buttonFormVisit = [
                 renderContent: props => button(props),
             },
             {
-                type: 'submit',
+                type: 'reset',
                 id: 'button-close',
                 title: 'Скасувати',
                 style: 'close',
@@ -33,7 +33,7 @@ export const buttonFormVisit = [
                 renderContent: props => button(props),
             },
             {
-                type: 'submit',
+                type: 'reset',
                 id: 'button-close',
                 title: 'Скасувати',
                 style: 'close',

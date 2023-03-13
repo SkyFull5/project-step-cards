@@ -12,4 +12,6 @@ export const fetchLogin = async (email, password) => {
     }
     return login;
     // TODO если не тогда модалка еррора
+
+    return login;
 };

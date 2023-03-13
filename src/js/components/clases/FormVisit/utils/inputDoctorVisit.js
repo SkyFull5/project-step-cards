@@ -20,13 +20,6 @@ export const inputDoctorVisit = [
             },
             {
                 type: 'text',
-                name: 'chooseDoctor',
-                placeholder: 'Оберіть педіатра',
-                value: '',
-                renderContent: props => input(props),
-            },
-            {
-                type: 'text',
                 name: 'normalPressure',
                 placeholder: 'Звичайний тиск',
                 value: '',

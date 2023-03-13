@@ -1,8 +1,8 @@
-export const root = document.querySelector('#root');
+import { LoginForm } from '../../components/clases/Login/LoginForm.js';
 
-const renderLoginPage = async () => {
-  const login = new Login();
+const root = document.querySelector('#root');
+
+export const LoginPage = async () => {
+  const login = new LoginForm();
   root.appendChild(await login.renderElement());
-}
-
-renderLoginPage();
+};

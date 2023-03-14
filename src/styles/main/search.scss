@@ -1,5 +1,15 @@
 .search {
     width: 100%;
-    padding: 20px;
-    background-color: $background-primary;
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+
+    & .input {
+        width: 300px;
+        margin-right: 300px;
+    }
+
+    & .dropdown {
+        width: 200px;
+    }
 }

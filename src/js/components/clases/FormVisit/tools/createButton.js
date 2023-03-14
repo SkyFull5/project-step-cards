@@ -1,6 +1,9 @@
 import { buttonFormVisit } from '../utils/index.js';
 
 export const createButton = idForm => {
+    const buttonWrapper = document.createElement('div');
+    buttonWrapper.classList.add('wrapper-button');
+
     const button = buttonFormVisit
         .map(item => {
             if (item.form === idForm) {
@@ -10,5 +13,7 @@ export const createButton = idForm => {
         .find(item => !!item)
         .join('');
 
-    return `<div class='wrapper-button'>${button}</div>`;
+    buttonWrapper.insertAdjacentHTML('afterbegin', button);
+
+    return buttonWrapper;
 };

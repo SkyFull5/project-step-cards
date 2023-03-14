@@ -37,9 +37,9 @@
 }
 
 .card-option {
-    height: 17px;
-    width: 17px;
     cursor: pointer;
+    border: none;
+    background: none;
 
     &:hover {
         transform: scale(1.1);

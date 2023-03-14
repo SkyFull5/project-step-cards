@@ -16,5 +16,3 @@ export const deleteCard = async id => {
         console.error(e);
     }
 };
-
-// TODO fetch

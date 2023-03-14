@@ -1,6 +1,7 @@
 import { deleteCard } from './deleteCard.js';
 import { showInfo } from './showInfo.js';
 import { actionVisit } from '../actionVisit/actionVisit.js';
+import {changeStatus} from './changeStatus.js';
 
 export const handlerButtonsCard = async (e, allCard) => {
     const id = e.target?.closest('.card')?.dataset?.cardId;
@@ -15,5 +16,10 @@ export const handlerButtonsCard = async (e, allCard) => {
 
     if (e.target.closest('.delete-card')) {
         await deleteCard(id);
+    }
+
+    if (e.target.closest('.status-button')) {
+        const button = e.target;
+        await changeStatus(id, allCard, button);
     }
 };

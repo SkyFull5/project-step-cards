@@ -1,23 +1,23 @@
-import {modalHeaders} from './tools/modalHeaders';
+import { modalHeaders } from './tools/modalHeaders';
 
 export class Modal {
     ANIMATION_SPEED = 200;
     closing = false;
-    modal = document.createElement('div')
+    modal = document.createElement('div');
 
     constructor(options = {}) {
-        this.title = options.title ?? '';
+        this.title = options.title;
         this.closable = options.closable;
         this.width = options.width;
         this.content = options.content;
         this.footerButtons = options.footerButtons;
         this.onClose = options.onClose;
         this._createModal();
-        this._listener = (e) => {
+        this._listener = e => {
             if (e.target.dataset.close) {
                 this.close();
             }
-        }
+        };
     }
     open() {
         // if (this.destroyed) {
@@ -44,24 +44,26 @@ export class Modal {
         this.modal.parentNode.removeChild(this.modal);
     }
 
-    setModal (type = 'create-visit', html) {
+    setModal(type = 'create-visit', html) {
         this.setTitle(type);
         this.setContent(html);
     }
     setContent(html) {
-        this.modal.querySelector('[data-content]').innerHTML = html;
+        this.modal.querySelector('[data-content]').append(html);
     }
     setTitle(type = 'create') {
         this.modal.querySelector('.modal-header').innerHTML = `
             <h4 class="modal-title">${modalHeaders[type].title || 'Окно'}</h4>
           ${modalHeaders[type].closable ? `<span class="modal-close" data-close="true">&times;</span>` : ''}
-        `
+        `;
     }
 
     _createModal() {
         const DEFAULT_WIDTH = '466px';
         this.modal.classList.add('vmodal');
-        this.modal.insertAdjacentHTML('afterbegin', `
+        this.modal.insertAdjacentHTML(
+            'afterbegin',
+            `
     <div class="modal-overlay" data-close="true">
         <div class="modal-window" style="width: ${this.width || DEFAULT_WIDTH}">
         <div class="modal-header">
@@ -73,11 +75,12 @@ export class Modal {
         </div>
         </div>
     </div>
-    `);
+    `
+        );
         const footer = this._createModalFooter(this.footerButtons);
-        footer && this.modal.querySelector('[data-content]').insertAdjacentElement('afterend', footer)
-        this.modal.addEventListener('click', (e) => this._listener(e));
-        document.body.append(this.modal)
+        footer && this.modal.querySelector('[data-content]').insertAdjacentElement('afterend', footer);
+        this.modal.addEventListener('click', e => this._listener(e));
+        document.body.append(this.modal);
     }
 
     _createModalFooter(buttons = []) {
@@ -86,12 +89,12 @@ export class Modal {
         }
         const wrap = document.createElement('div');
         wrap.classList.add('modal-footer');
-        buttons.forEach((btn) => {
+        buttons.forEach(btn => {
             const button = document.createElement('button');
             button.textContent = btn.text;
             button.classList.add('btn', `btn-${btn.type || 'confirm'}`);
-            btn.form && button.setAttribute('form', `${btn.form}`)
-            btn.type && button.setAttribute('type', `${btn.type}`)
+            btn.form && button.setAttribute('form', `${btn.form}`);
+            btn.type && button.setAttribute('type', `${btn.type}`);
             const voidF = () => {};
             button.onclick = btn.handler || voidF;
             wrap.append(button);

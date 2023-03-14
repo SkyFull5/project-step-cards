@@ -1,54 +1,90 @@
 import { createButton, createDefaultInput, createDoctorInput } from './tools/index.js';
+import { logo } from '../../../UI/index.js';
 
 export class FormVisit {
-    constructor({ doctor = '', params = '', id }) {
-        this.id = id;
-        this.doctor = doctor;
+    form = document.createElement('form');
+    constructor({ params = '', idForm, modal }) {
+        this.idForm = idForm;
+        this.doctor = params?.doctor;
         this.params = params;
+        this.modal = modal;
+        this.formField = '';
     }
 
     renderElement() {
-        const doctorInput = !!this.params && createDoctorInput({ doctor: this.doctor, params: this.params });
-
         const renderInput = createDefaultInput(this.params);
+        const renderButton = createButton(this.idForm);
 
-        const renderButton = createButton(this.id);
+        this.form.classList.add('form-visit');
+        this.form.id = this.idForm;
+        this.form.insertAdjacentHTML('afterbegin', renderInput);
+        this.form.append(renderButton);
 
-        return `<form class='form-visit' id='${this.id}'>${renderInput}${doctorInput}${renderButton}</form>`;
+        if (!!this.params) {
+            this.renderInputDoctor();
+        }
+
+        this.actionSubmitForm();
+        this.actionResetForm();
+        this.actionChooseDoctor();
+        this.actionButtonDisabled();
+
+        return this.form;
     }
 
     renderInputDoctor(value) {
-        const textAreaInForm = document.querySelector('textarea');
-        const doctorInputsContainer = document.querySelector('.doctor-inputs');
-
+        const doctorInputsContainer = this.form.querySelector('.doctor-inputs');
         !!doctorInputsContainer && doctorInputsContainer.remove();
 
-        const renderDoctorInput = createDoctorInput({ value });
+        let renderDoctorInput;
 
-        textAreaInForm.insertAdjacentHTML('beforebegin', renderDoctorInput);
+        if (!!value) {
+            renderDoctorInput = createDoctorInput({ value });
+        } else {
+            renderDoctorInput = createDoctorInput({ doctor: this.doctor, params: this.params });
+        }
+        const textarea = this.form.querySelector('textarea');
+        const parentNodeArea = textarea.parentNode;
+
+        parentNodeArea.insertBefore(renderDoctorInput, textarea);
     }
 
-    observerForm() {
-        const doctorInputs = document.querySelector('#choose-doctor');
-        doctorInputs.addEventListener('change', e => {
+    actionChooseDoctor() {
+        const chooseDoctor = this.form.querySelector('#choose-doctor');
+        chooseDoctor.addEventListener('change', e => {
             this.renderInputDoctor(e.target.value);
-            this.doctor = e.target.value;
-        });
-        this.observerButtonDisabled();
-    }
-
-    observerButtonDisabled() {
-        const form = document.querySelector(`#${this.id}`);
-        const button = document.querySelector('#button-submit');
-
-        form.addEventListener('keydown', () => {
-            const res = [...form].filter(item => item.tagName !== 'BUTTON').filter(item => !item.value);
-            button.disabled = res[0];
         });
     }
 
-    removeElement() {
-        const form = document.querySelector(`#${this.id}`);
-        form.remove();
+    actionSubmitForm() {
+        this.form.addEventListener('submit', async event => {
+            event.preventDefault();
+            const formField = {};
+            [...event.target.elements].forEach(item => {
+                if (!!item.name) {
+                    formField[item.name] = item.value;
+                }
+            });
+            formField.creationTime = new Date().getTime();
+            if (this.idForm === 'create-visit') {
+                formField.status = false;
+            }
+            this.formField = formField;
+            this.modal.close();
+        });
+    }
+
+    actionResetForm() {
+        this.form.addEventListener('reset', () => this.modal.close());
+    }
+
+    actionButtonDisabled() {
+        const button = this.form.querySelector('#button-submit');
+
+        this.form.addEventListener('keyup', () => {
+            const res = [...this.form].filter(item => item.tagName !== 'BUTTON').filter(item => !item.value);
+
+            button.disabled = !!res[0];
+        });
     }
 }

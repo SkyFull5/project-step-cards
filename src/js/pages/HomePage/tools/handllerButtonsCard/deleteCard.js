@@ -1,4 +1,4 @@
-import { fetchDeleteCard } from '../../../tools/index.js';
+import { fetchDeleteCard } from '../../../../tools/index.js';
 
 export const deleteCard = async id => {
     try {

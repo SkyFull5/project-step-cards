@@ -5,15 +5,14 @@ export const createDefaultInput = (params = '') => {
         .map(item => {
             if (!!params) {
                 item.value = params[item?.name];
-                if (!!item?.dropdownContent) {
-                    item?.dropdownContent.forEach(con => {
-                        if (con.value === params.doctor || con.value === params.urgency) {
-                            con.selected = 'selected';
-                        }
-                    });
-                }
+                item?.dropdownContent?.forEach(con => {
+                    if (con.value === params.doctor || con.value === params.urgency) {
+                        con.selected = 'selected';
+                    }
+                });
             } else {
                 item.value = '';
+                item?.dropdownContent?.forEach(con => (con.selected = ''));
             }
 
             return item.renderContent(item);

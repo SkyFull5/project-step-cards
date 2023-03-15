@@ -10,7 +10,8 @@ export const HomePage = async () => {
 
     const { res: allCard } = await fetchGetCard();
 
-    const cardContainer = document.querySelector('.cards-container');
+    const cardContainer = document.querySelector('.cards-list');
+    const paginationContainer = document.querySelector('.pagination-wrapper');
     const createVisit = document.querySelector('#create-visit-button');
 
     createVisit.addEventListener('click', () => {

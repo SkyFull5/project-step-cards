@@ -14,7 +14,7 @@ export const actionVisit = async ({ idForm = '', id = '', allCard = '' }) => {
     modal.open();
 
     formVisit.form.addEventListener('submit', async () => {
-        const cardContainer = document.querySelector('.cards-list-wrapper');
+        const cardContainer = document.querySelector('.cards-list');
         let res;
         if (idForm === 'create-visit') {
             res = await fetchNewCard(formVisit.formField);

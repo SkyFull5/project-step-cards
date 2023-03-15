@@ -7,7 +7,7 @@ export const handlerButtonsCard = async (e, allCard) => {
     const id = e.target?.closest('.card')?.dataset?.cardId;
 
     if (e.target.closest('.show-more')) {
-        showInfo(id);
+        showInfo(id, allCard);
     }
 
     if (e.target.closest('.editing-visiting')) {

@@ -1,7 +1,14 @@
 import { Modal } from '../../../../components/clases/index.js';
 
-export const showInfo = id => {
+export const showInfo = ( id, allCards) => {
+    const card = allCards.find( card => card.id === +id); // Объект карточки, вся необходимая инфа тут.
+    console.log(card); // Можешь создать три экземпляра карточек с разными врачами, посмотреть какие поля они содрежать в консоли.
     const modal = new Modal();
-    modal.setModal('show-info', 'edit');
+    modal.setModal('show-info', 'Сюда вставить отрисовку');
     modal.open();
 };
+
+// TODO написать класс который примет на вход объект с информацией о визите и отрисует содержимое модалки.
+
+// Важно помнить, что у разных врачей есть разные поля для отрисовки. Т.е. сердечно сосидистые заболевания
+// нужно отрисовывать только для Кардиолога

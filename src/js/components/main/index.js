@@ -9,6 +9,10 @@ export const Main = () => {
                             <p>Терміновість</p>
                             <div></div>
                         </div>
+                        <div class="cards-list"></div>
+                        <div class="pagination-wrapper">
+                            <div class="pagination-button active">1</div>
+                        </div>
                     </div>
                 </div>
             </main>`;

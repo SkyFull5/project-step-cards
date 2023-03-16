@@ -1,0 +1,17 @@
+.info {
+    color: $text-secondary;
+    border: 1px solid white;
+}
+
+.info-row {
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+    gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+
+.info-label {
+    padding: 20px;
+    border-right: 1px solid white;
+}

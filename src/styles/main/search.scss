@@ -1,5 +1,35 @@
 .search {
     width: 100%;
-    padding: 20px;
-    background-color: $background-primary;
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+
+    & .title {
+        position: relative;
+        margin-right: 300px;
+
+        &::before {
+            width: 26px;
+            height: 26px;
+            content: '';
+            background-color: white;
+            background-image: url('./src/assets/img/icon-search.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            z-index: 2;
+            right: -8px;
+            top: 50%;
+            bottom: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    & .input {
+        width: 300px;
+    }
+
+    & .dropdown {
+        width: 200px;
+    }
 }

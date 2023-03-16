@@ -1,6 +1,11 @@
 .loader {
     display: inline-block;
     position: relative;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 .loader::after,
 .loader::before {
@@ -9,14 +14,11 @@
     width: inherit;
     height: inherit;
     border-radius: 50%;
-    background: #fff;
+    background: $button-primary;
     position: absolute;
     left: 0;
     top: 0;
-    animation: animationLoader 2s linear infinite;
-}
-.loader::after {
-    animation-delay: 1s;
+    animation: animationLoader 1s linear infinite;
 }
 
 @keyframes animationLoader {

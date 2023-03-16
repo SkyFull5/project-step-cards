@@ -1,4 +1,4 @@
-import {modalHeaders} from './tools/modalHeaders';
+import { modalHeaders } from './utils/modalHeaders.js';
 
 export class Modal {
     ANIMATION_SPEED = 200;

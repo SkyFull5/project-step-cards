@@ -4,7 +4,7 @@ export const searchDefault = [
     {
         type: 'text',
         name: 'title',
-        placeholder: 'Пошук за заголовком',
+        placeholder: 'Пошук за Прізвищем',
         value: '',
         renderContent: props => input(props),
     },

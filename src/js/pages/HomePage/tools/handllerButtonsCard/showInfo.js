@@ -1,8 +1,8 @@
-import { Modal } from '../../../../components/clases/index.js';
+import { InfoVisit, Modal } from '../../../../components/clases/index.js';
 
-export const showInfo = ( id, allCards) => {
+export const showInfo = (id, allCards) => {
     const card = allCards.find(card => card.id === +id);
-    const modal = new Modal();
+    const modal = new Modal({ width: '80%' });
     const infoVisit = new InfoVisit(card);
     modal.setModal('show-info', infoVisit.render());
     modal.open();

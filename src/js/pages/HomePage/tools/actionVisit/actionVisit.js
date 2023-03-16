@@ -15,17 +15,17 @@ export const actionVisit = async ({ idForm = '', id = '', allCard = '' }) => {
 
     formVisit.form.addEventListener('submit', async () => {
         const cardContainer = document.querySelector('.cards-list');
-        let res;
+
         if (idForm === 'create-visit') {
-            res = await fetchNewCard(formVisit.formField);
+            const res = await fetchNewCard(formVisit.formField);
 
             const newCard = new Card(res.res);
 
+            document.querySelectorAll('.card')[7].remove();
             cardContainer.prepend(newCard.render());
-
             allCard.push(res.res);
         } else {
-            res = await fetchEditCard(id, formVisit.formField);
+            const res = await fetchEditCard(id, formVisit.formField);
             const editCard = new Card(res.res);
             document.querySelector(`[data-card-id="${+id}"]`).remove();
             allCard.unshift(res.res);

@@ -1,7 +1,5 @@
 export const Main = () => {
     return `<main class='main'>
-                <div class='search'>
-                </div>
                 <div class='cards-list-wrapper'>
                     <div class="cards-container">
                         <div class="card card-header">

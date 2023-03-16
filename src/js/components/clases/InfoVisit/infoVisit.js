@@ -1,46 +1,47 @@
+import { addRow } from './tools/addRow.js';
+
 export class InfoVisit {
-  constructor(card = {}) {
-    this.card = {
-      description: null,
-      normalPressure: null,
-      cardiovascularDiseases: null,
-      lastVisitDate: null,
-      age: null,
-      ...card,
-    };
-  }
-
-  render() {
-    const container = document.createElement('div');
-    container.className = 'info';
-
-    const addRow = (label, value) => {
-      const div = `
-        <div class="info-row">
-          <div class="info-label">${label}</div>
-          <div class="info-value">${value || 'Невідомо'}</div>
-        </div>`;
-      container.insertAdjacentHTML('beforeend', div);
-    };
-
-    addRow('ПІБ:', `${this.card.lastName} ${this.card.firstName} ${this.card.middleName}`);
-    addRow('Мета візиту:', this.card.purpose);
-    addRow('Терміновість:', this.card.urgency);
-    addRow('Статус:', this.card.complete ? 'Complete' : 'Incomplete');
-
-    if (this.card.doctor === 'Cardiologist') {
-      addRow('Вік:', this.card.age);
-      addRow('Індекс маси тіла:', this.card.bodyMassIndex);
-      addRow('Звичайний тиск:', this.card.normalPressure);
-      addRow('Серцево-судинні захворювання:', this.card.cardiovascularDiseases);
-    } else if (this.card.doctor === 'Dentist') {
-      addRow('Дата останнього відвідування:', this.card.lastVisitDate);
-    } else if (this.card.doctor === 'Therapist') {
-      addRow('Вік:', this.card.age);
+    constructor(card = {}) {
+        this.card = {
+            description: null,
+            normalPressure: null,
+            cardiovascularDiseases: null,
+            lastVisitDate: null,
+            age: null,
+            ...card,
+        };
     }
 
-    addRow('Короткий опис візиту:', this.card.description);
+    render() {
+        const container = document.createElement('div');
+        container.className = 'info';
 
-    return container;
-  }
+        if (this.card.urgency === 'High') {
+            this.card.urgency = 'Невідкладна';
+        } else if (this.card.urgency === 'Normal') {
+            this.card.urgency = 'Пріоритетна';
+        } else {
+            this.card.urgency = 'Звичайна';
+        }
+
+        addRow('ПІБ:', `${this.card.secondName} ${this.card.firstName} ${this.card.fatherName}`, container);
+        addRow('Мета візиту:', this.card.metaVisit, container);
+        addRow('Терміновість:', this.card.urgency, container);
+        addRow('Статус:', !!this.card.status ? 'Завершено' : 'Не завершено', container);
+
+        if (this.card.doctor === 'Cardiologist') {
+            addRow('Вік:', this.card.age, container);
+            addRow('Індекс маси тіла:', this.card.bodyMassIndex, container);
+            addRow('Звичайний тиск:', this.card.normalPressure, container);
+            addRow('Серцево-судинні захворювання:', this.card.CardiovascularDiseases === 'true' ? 'Так' : 'Ні', container);
+        } else if (this.card.doctor === 'Dentist') {
+            addRow('Дата останнього відвідування:', this.card.dataLastVisit, container);
+        } else if (this.card.doctor === 'Therapist') {
+            addRow('Вік:', this.card.age, container);
+        }
+
+        addRow('Короткий опис візиту:', this.card.description, container);
+
+        return container;
+    }
 }

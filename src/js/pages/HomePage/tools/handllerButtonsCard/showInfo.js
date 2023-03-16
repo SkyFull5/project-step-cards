@@ -1,10 +1,10 @@
 import { Modal } from '../../../../components/clases/index.js';
 
 export const showInfo = ( id, allCards) => {
-    const card = allCards.find( card => card.id === +id); // Объект карточки, вся необходимая инфа тут.
-    console.log(card); // Можешь создать три экземпляра карточек с разными врачами, посмотреть какие поля они содрежать в консоли.
+    const card = allCards.find(card => card.id === +id);
     const modal = new Modal();
-    modal.setModal('show-info', 'Сюда вставить отрисовку');
+    const infoVisit = new InfoVisit(card);
+    modal.setModal('show-info', infoVisit.render());
     modal.open();
 };
 

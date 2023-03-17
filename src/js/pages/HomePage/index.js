@@ -45,6 +45,7 @@ export const HomePage = async () => {
     //
     // paginationContainer.addEventListener('click', func);
 
+
     cardContainer.addEventListener('click', e => {
         handlerButtonsCard(e, allCard);
     });

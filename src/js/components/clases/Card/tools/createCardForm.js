@@ -1,8 +1,8 @@
-import {doctors} from '../utils/doctorsInfo.js';
+import {doctors} from '../../utils/doctorsInfo.js';
 import {button} from '../../../../UI/index.js';
 import {createOption} from './createOption.js';
 import {options} from '../utils/options.js';
-import {urgencies} from '../utils/urgencyInfo.js';
+import {urgencies} from '../../utils/urgencyInfo.js';
 import {createStatusButton} from './createStatusButton.js';
 
 export const createCardForm = (name, doctor, id, complete, urgency) => {

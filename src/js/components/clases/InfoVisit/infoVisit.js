@@ -1,4 +1,6 @@
 import { addRow } from './tools/addRow.js';
+import {doctors} from '../utils/doctorsInfo.js';
+import {urgencies} from '../utils/urgencyInfo.js';
 
 export class InfoVisit {
     constructor(card = {}) {
@@ -16,17 +18,10 @@ export class InfoVisit {
         const container = document.createElement('div');
         container.className = 'info';
 
-        if (this.card.urgency === 'High') {
-            this.card.urgency = 'Невідкладна';
-        } else if (this.card.urgency === 'Normal') {
-            this.card.urgency = 'Пріоритетна';
-        } else {
-            this.card.urgency = 'Звичайна';
-        }
-
         addRow('ПІБ:', `${this.card.secondName} ${this.card.firstName} ${this.card.fatherName}`, container);
+        addRow('Лікар:', `${doctors[this.card.doctor]}`, container);
         addRow('Мета візиту:', this.card.metaVisit, container);
-        addRow('Терміновість:', this.card.urgency, container);
+        addRow('Терміновість:', urgencies[this.card.urgency], container);
         addRow('Статус:', !!this.card.status ? 'Завершено' : 'Не завершено', container);
 
         if (this.card.doctor === 'Cardiologist') {

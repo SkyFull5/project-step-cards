@@ -1,26 +1,33 @@
-import { renderElementSearch } from './tools/renderElementSearch.js';
+import { filterCards, renderElementSearch, useCallback } from './tools/index.js';
 
 export class Search {
     searchContainer = document.createElement('div');
 
-    constructor(cards) {
+    constructor({ cards, cardContainer, paginationContainer, paginationPage = 1, callback }) {
         this.title = '';
         this.urgency = '';
         this.status = '';
         this.cards = '';
         this.defaultCards = cards;
+        this.cardContainer = cardContainer;
+        this.paginationContainer = paginationContainer;
+        this.paginationPage = paginationPage;
+        this.callback = callback;
+        this.observePaginationContainer();
     }
 
-    renderElement(callback) {
+    renderElement() {
         const renderInput = renderElementSearch();
 
         this.searchContainer.classList.add('search-wrapper');
         this.searchContainer.append(renderInput);
-        this.actionSearch(callback);
+        this.actionSearchSelectOrTitle();
+        this.actionSearchTitle();
+
         return this.searchContainer;
     }
 
-    actionSearch(callback) {
+    actionSearchSelectOrTitle() {
         this.searchContainer.addEventListener('change', e => {
             const targetName = e.target.name;
             const targetValue = e.target.value;
@@ -31,7 +38,7 @@ export class Search {
                     this.urgency = '';
                 }
             }
-            if (e.target.name === 'status') {
+            if (targetName === 'status') {
                 this.status = targetValue;
 
                 if (!targetValue) {
@@ -39,45 +46,51 @@ export class Search {
                 }
             }
 
-            this.cards = this.defaultCards.filter(item => {
-                if (!!this.urgency && !!this.status) {
-                    return String(item.status) === this.status && item.urgency === this.urgency;
-                } else if (!!this.urgency) {
-                    return item.urgency === this.urgency;
-                } else if (!!this.status) {
-                    return String(item.status) === this.status;
-                } else {
-                    return item;
-                }
-            });
+            if (targetName === 'urgency' || targetName === 'status') {
+                this.paginationPage = 1;
 
-            if (!this.status && !this.urgency) {
-                callback(this.defaultCards);
-                console.log('status');
-            } else {
-                callback(this.cards);
-                console.log('cards');
+                this.actionFilterCard();
+                this.actionSearchRender();
             }
         });
-
+    }
+    actionSearchTitle() {
         this.searchContainer.addEventListener('input', e => {
-            const targetValue = e.target.value;
+            if (e.target.name === 'title') {
+                this.title = e.target.value;
 
-            this.cards = this.defaultCards.filter(({ secondName, urgency, status }) => {
-                const checkSecondName = secondName.toLowerCase().indexOf(targetValue.toLowerCase()) >= 0;
+                this.paginationPage = 1;
 
-                if (!!this.status && !!this.urgency) {
-                    return checkSecondName && urgency === this.urgency && String(status) === this.status;
-                } else if (!!this.status) {
-                    return checkSecondName && String(status) === this.status;
-                } else if (!!this.urgency) {
-                    return checkSecondName && urgency === this.urgency;
-                } else {
-                    return checkSecondName;
-                }
-            });
+                this.actionFilterCard();
+                this.actionSearchRender();
+            }
+        });
+    }
 
-            callback(this.cards);
+    actionFilterCard() {
+        this.cards = filterCards(this.defaultCards, this.urgency, this.status, this.title);
+    }
+    actionSearchRender() {
+        useCallback({
+            callback: this.callback,
+            defaultCards: this.defaultCards,
+            cards: this.cards,
+            paginationContainer: this.paginationContainer,
+            cardContainer: this.cardContainer,
+            activeButton: this.paginationPage,
+            status: this.status,
+            urgency: this.urgency,
+            title: this.title,
+        });
+    }
+
+    observePaginationContainer() {
+        this.paginationContainer.addEventListener('click', e => {
+            if (!e.target.classList.contains('pagination-wrapper')) {
+                this.paginationPage = Number(e.target.textContent);
+
+                this.actionSearchRender();
+            }
         });
     }
 }

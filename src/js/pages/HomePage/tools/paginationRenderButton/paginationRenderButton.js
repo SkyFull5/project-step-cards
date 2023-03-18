@@ -1,4 +1,4 @@
-export const pagination = (quantity, container) => {
+export const paginationRenderButton = (quantity, container) => {
     const quantityArr = [];
 
     for (let i = 0; i <= quantity - 1; ++i) {

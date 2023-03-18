@@ -1,4 +1,4 @@
-import { InfoVisit, Modal } from '../../../../components/clases/index.js';
+import { InfoVisit, Modal } from '../../../../components/index.js';
 
 export const showInfo = (id, allCards) => {
     const card = allCards.find(card => card.id === +id);
@@ -7,8 +7,3 @@ export const showInfo = (id, allCards) => {
     modal.setModal('show-info', infoVisit.render());
     modal.open();
 };
-
-// TODO написать класс который примет на вход объект с информацией о визите и отрисует содержимое модалки.
-
-// Важно помнить, что у разных врачей есть разные поля для отрисовки. Т.е. сердечно сосидистые заболевания
-// нужно отрисовывать только для Кардиолога

@@ -11,12 +11,12 @@ export const inputDefaultVisit = [
     {
         type: 'dropdown',
         name: 'doctor',
-        placeholder: 'Оберіть педіатра',
+        placeholder: 'Оберіть лікаря',
         value: '',
         renderContent: props => dropdown(props),
         id: 'choose-doctor',
         dropdownContent: [
-            { value: '', title: 'Оберіть педіатра' },
+            { value: '', title: 'Оберіть лікаря' },
             {
                 value: 'Cardiologist',
                 title: 'Кардіолог',
@@ -37,7 +37,7 @@ export const inputDefaultVisit = [
     {
         type: 'text',
         name: 'secondName',
-        placeholder: 'Фамілія',
+        placeholder: 'Прізвище',
         value: '',
         renderContent: props => input(props),
     },
@@ -70,7 +70,7 @@ export const inputDefaultVisit = [
     {
         type: 'text',
         name: 'fatherName',
-        placeholder: "Ім'я по батькові",
+        placeholder: 'По батькові',
         value: '',
         renderContent: props => input(props),
     },

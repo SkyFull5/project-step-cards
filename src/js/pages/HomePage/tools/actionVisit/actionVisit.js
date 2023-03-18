@@ -1,6 +1,5 @@
-import { FormVisit, Modal } from '../../../../components/index.js';
-import { Card } from '../../../../components/clases/Card/Card.js';
 import { fetchEditCard, fetchNewCard } from '../../../../tools/index.js';
+import { Card, FormVisit, Modal } from '../../../../components/index.js';
 
 export const actionVisit = async ({ idForm = '', id = '', allCard = '' }) => {
     const modal = new Modal();
@@ -23,6 +22,7 @@ export const actionVisit = async ({ idForm = '', id = '', allCard = '' }) => {
 
             const cards = document.querySelectorAll('.card');
             !!cards[7] && cards[7].remove();
+
             cardContainer.prepend(newCard.render());
             allCard.push(res.res);
         } else {

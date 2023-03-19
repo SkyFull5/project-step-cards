@@ -11,8 +11,6 @@ export class Modal {
         this.closable = options.closable;
         this.width = options.width;
         this.content = options.content;
-        this.footerButtons = options.footerButtons;
-        this.onClose = options.onClose;
         this._createModal();
         this._listener = e => {
             if (e.target.dataset.close) {
@@ -21,9 +19,6 @@ export class Modal {
         };
     }
     open() {
-        // if (this.destroyed) {
-        //     return console.log('Modal is destroyed');
-        // }
         !this.closing && this.modal.classList.add('open');
     }
 
@@ -34,9 +29,6 @@ export class Modal {
         setTimeout(() => {
             this.modal.classList.remove('hide');
             this.closing = false;
-            // if (typeof this.onClose === 'function') {
-            //     this.onClose();
-            // }
             this.destroy();
         }, this.ANIMATION_SPEED);
     }
@@ -76,30 +68,9 @@ export class Modal {
         </div>
         </div>
     </div>
-    `
-        );
-        const footer = this._createModalFooter(this.footerButtons);
-        footer && this.modal.querySelector('[data-content]').insertAdjacentElement('afterend', footer);
+    ` );
         this.modal.addEventListener('click', e => this._listener(e));
         document.body.append(this.modal);
     }
 
-    _createModalFooter(buttons = []) {
-        if (buttons.length === 0) {
-            return false;
-        }
-        const wrap = document.createElement('div');
-        wrap.classList.add('modal-footer');
-        buttons.forEach(btn => {
-            const button = document.createElement('button');
-            button.textContent = btn.text;
-            button.classList.add('btn', `btn-${btn.type || 'confirm'}`);
-            btn.form && button.setAttribute('form', `${btn.form}`);
-            btn.type && button.setAttribute('type', `${btn.type}`);
-            const voidF = () => {};
-            button.onclick = btn.handler || voidF;
-            wrap.append(button);
-        });
-        return wrap;
-    }
 }

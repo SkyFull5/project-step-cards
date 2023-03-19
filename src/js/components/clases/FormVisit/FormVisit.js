@@ -81,7 +81,7 @@ export class FormVisit {
     actionButtonDisabled() {
         const button = this.form.querySelector('#button-submit');
 
-        this.form.addEventListener('keyup', () => {
+        this.form.addEventListener('input', () => {
             const res = [...this.form].filter(item => item.tagName !== 'BUTTON').filter(item => !item.value);
 
             button.disabled = !!res[0];

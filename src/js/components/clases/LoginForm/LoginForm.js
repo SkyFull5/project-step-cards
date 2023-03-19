@@ -26,9 +26,10 @@ export class LoginForm {
         });
         this.submitButton = button({
             type: 'submit',
-            title: 'Логин',
+            title: 'Логін',
             style: 'submit',
         });
+
         this.form = document.createElement('form');
         this.form.id = 'login-form';
         this.form.innerHTML = '<h4>Логін</h4>';
@@ -42,19 +43,16 @@ export class LoginForm {
         return this.element;
     }
 
-    removeElement() {
-        this.form.removeEventListener('submit', this.handleSubmit);
-        this.element.remove();
-    }
-
     async handleSubmit(event) {
         event.preventDefault();
+
         const formField = {};
         [...event.target.elements].forEach(item => (formField[item.name] = item.value));
         const login = await fetchLogin(formField.email, formField.password);
         if (login.status === 200) {
             await mainPage();
+        } else {
+            alert('Введіть правильні дані');
         }
-        this.removeElement();
     }
 }

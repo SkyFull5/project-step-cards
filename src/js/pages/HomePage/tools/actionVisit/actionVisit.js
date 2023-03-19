@@ -22,6 +22,8 @@ export const actionVisit = async ({ idForm = '', id = '', allCard = '' }) => {
 
             const cards = document.querySelectorAll('.card');
             !!cards[7] && cards[7].remove();
+            const defText = document.querySelector('#def-text');
+            !!defText && defText.remove();
 
             cardContainer.prepend(newCard.render());
             allCard.push(res.res);

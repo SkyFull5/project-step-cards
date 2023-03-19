@@ -19,7 +19,6 @@ export const HomePage = async () => {
 
     await renderCards({ cardContainer, allCard, paginationContainer });
 
-
     cardContainer.addEventListener('click', e => {
         handlerButtonsCard(e, allCard);
     });

@@ -27,7 +27,6 @@ export class FormVisit {
         this.actionSubmitForm();
         this.actionResetForm();
         this.actionChooseDoctor();
-        this.actionButtonDisabled();
 
         return this.form;
     }
@@ -41,7 +40,10 @@ export class FormVisit {
         if (!!value) {
             renderDoctorInput = createDoctorInput({ value });
         } else {
-            renderDoctorInput = createDoctorInput({ doctor: this.doctor, params: this.params });
+            renderDoctorInput = createDoctorInput({
+                doctor: this.doctor,
+                params: this.params,
+            });
         }
         const textarea = this.form.querySelector('textarea');
         const parentNodeArea = textarea.parentNode;
@@ -76,15 +78,5 @@ export class FormVisit {
 
     actionResetForm() {
         this.form.addEventListener('reset', () => this.modal.close());
-    }
-
-    actionButtonDisabled() {
-        const button = this.form.querySelector('#button-submit');
-
-        this.form.addEventListener('input', () => {
-            const res = [...this.form].filter(item => item.tagName !== 'BUTTON').filter(item => !item.value);
-
-            button.disabled = !!res[0];
-        });
     }
 }

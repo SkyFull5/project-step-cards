@@ -1,6 +1,6 @@
 import { Header, Main, Search } from '../../components/index.js';
 import { actionVisit, handlerButtonsCard, renderCards } from './tools/index.js';
-import { fetchGetCard } from '../../tools/index.js';
+import { fetchGetCard, fetchNewCard } from '../../tools/index.js';
 
 const root = document.querySelector('#root');
 export const HomePage = async () => {
@@ -14,17 +14,22 @@ export const HomePage = async () => {
     const createVisit = document.querySelector('#create-visit-button');
 
     createVisit.addEventListener('click', () => {
-        actionVisit({ idForm: 'create-visit', allCard });
+        actionVisit({ idForm: 'create-visit' });
     });
 
     await renderCards({ cardContainer, allCard, paginationContainer });
 
-    cardContainer.addEventListener('click', e => {
-        handlerButtonsCard(e, allCard);
+    cardContainer.addEventListener('click', async e => {
+        await handlerButtonsCard(e, allCard, cardContainer, paginationContainer);
     });
 
     const main = document.querySelector('.main');
-    const search = new Search({ cards: allCard, cardContainer, paginationContainer, callback: renderCards });
+    const search = new Search({
+        cards: allCard,
+        cardContainer,
+        paginationContainer,
+        callback: renderCards,
+    });
 
     main.insertAdjacentElement('afterbegin', search.renderElement());
 };

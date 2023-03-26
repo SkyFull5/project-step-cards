@@ -29,5 +29,5 @@ export const renderCards = async ({ cardContainer, allCard, paginationContainer,
         } else {
             cardContainer.insertAdjacentHTML('beforeend', defaultTextCard);
         }
-    }, 1000);
+    }, 0);
 };

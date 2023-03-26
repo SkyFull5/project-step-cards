@@ -1,8 +1,11 @@
-import { fetchEditCard, fetchNewCard } from '../../../../tools/index.js';
+import { fetchEditCard, fetchGetCard, fetchNewCard } from '../../../../tools/index.js';
 import { Card, FormVisit, Modal } from '../../../../components/index.js';
+import { renderCards } from '../handllerButtonsCard/renderCards.js';
 
-export const actionVisit = async ({ idForm = '', id = '', allCard = '' }) => {
+export const actionVisit = async ({ idForm = '', id = '' }) => {
     const modal = new Modal();
+
+    const { res: allCard } = await fetchGetCard();
 
     const params = allCard.find(item => item.id === +id);
 
@@ -14,25 +17,18 @@ export const actionVisit = async ({ idForm = '', id = '', allCard = '' }) => {
 
     formVisit.form.addEventListener('submit', async () => {
         const cardContainer = document.querySelector('.cards-list');
+        const paginationContainer = document.querySelector('.pagination-wrapper');
 
         if (idForm === 'create-visit') {
-            const res = await fetchNewCard(formVisit.formField);
+            await fetchNewCard(formVisit.formField);
+            const { res: allCard } = await fetchGetCard();
 
-            const newCard = new Card(res.res);
-
-            const cards = document.querySelectorAll('.card');
-            !!cards[7] && cards[7].remove();
-            const defText = document.querySelector('#def-text');
-            !!defText && defText.remove();
-
-            cardContainer.prepend(newCard.render());
-            allCard.push(res.res);
+            await renderCards({ cardContainer, allCard, paginationContainer });
         } else {
-            const res = await fetchEditCard(id, formVisit.formField);
-            const editCard = new Card(res.res);
-            document.querySelector(`[data-card-id="${+id}"]`).remove();
-            allCard.unshift(res.res);
-            cardContainer.prepend(editCard.render());
+            await fetchEditCard(id, formVisit.formField);
+            const { res: allCard } = await fetchGetCard();
+
+            await renderCards({ cardContainer, allCard, paginationContainer });
         }
     });
 };

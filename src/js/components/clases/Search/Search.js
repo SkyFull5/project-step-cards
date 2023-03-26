@@ -29,7 +29,10 @@ export class Search {
     }
 
     actionSearchSelectOrTitle() {
-        this.searchContainer.addEventListener('change', e => {
+        this.searchContainer.addEventListener('change', async e => {
+            const { res: allCard } = await fetchGetCard();
+            this.defaultCards = allCard;
+
             const targetName = e.target.name;
             const targetValue = e.target.value;
 

@@ -1,4 +1,5 @@
 import { filterCards, renderElementSearch, useCallback } from './tools/index.js';
+import { fetchGetCard } from '../../../tools/index.js';
 
 export class Search {
     searchContainer = document.createElement('div');
@@ -85,10 +86,11 @@ export class Search {
     }
 
     observePaginationContainer() {
-        this.paginationContainer.addEventListener('click', e => {
+        this.paginationContainer.addEventListener('click', async e => {
             if (!e.target.classList.contains('pagination-wrapper')) {
                 this.paginationPage = Number(e.target.textContent);
-
+                const { res: allCard } = await fetchGetCard();
+                this.defaultCards = allCard;
                 this.actionSearchRender();
             }
         });

@@ -1,20 +1,19 @@
-import {fetchEditCard} from '../../../../tools/index.js';
+import { fetchEditCard, fetchGetCard } from '../../../../tools/index.js';
+import { renderCards } from './renderCards.js';
 
-export const changeStatus = async (id, allCards, button) => {
-    const card = allCards.find( card => card.id === +id);
+export const changeStatus = async id => {
+    const cardContainer = document.querySelector('.cards-list');
+    const paginationContainer = document.querySelector('.pagination-wrapper');
+    const { res: allCard } = await fetchGetCard();
+
+    const card = allCard.find(card => card.id === +id);
     card.status = !card.status;
 
     try {
-        const res = await fetchEditCard(id, card);
-        button.classList.toggle('complete');
+        await fetchEditCard(id, card);
 
-        if (button.classList.contains('complete')) {
-            button.textContent = 'Завершено';
-        } else {
-            button.textContent = 'Не завершено';
-        }
+        await renderCards({ cardContainer, allCard, paginationContainer });
     } catch (e) {
-        console.error(e)
+        console.error(e);
     }
-
-}
+};

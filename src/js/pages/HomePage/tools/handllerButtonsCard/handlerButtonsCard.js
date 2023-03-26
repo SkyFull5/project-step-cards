@@ -1,13 +1,13 @@
 import { deleteCard } from './deleteCard.js';
 import { showInfo } from './showInfo.js';
 import { actionVisit } from '../actionVisit/actionVisit.js';
-import {changeStatus} from './changeStatus.js';
+import { changeStatus } from './changeStatus.js';
 
 export const handlerButtonsCard = async (e, allCard) => {
     const id = e.target?.closest('.card')?.dataset?.cardId;
 
     if (e.target.closest('.show-more')) {
-        showInfo(id, allCard);
+        await showInfo(id, allCard);
     }
 
     if (e.target.closest('.editing-visiting')) {
@@ -19,7 +19,6 @@ export const handlerButtonsCard = async (e, allCard) => {
     }
 
     if (e.target.closest('.status-button')) {
-        const button = e.target;
-        await changeStatus(id, allCard, button);
+        await changeStatus(id);
     }
 };

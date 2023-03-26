@@ -5,7 +5,7 @@ export const inputDoctorVisit = [
         value: 'Cardiologist',
         content: [
             {
-                type: 'text',
+                type: 'number',
                 name: 'age',
                 placeholder: 'Вік',
                 value: '',
@@ -19,7 +19,7 @@ export const inputDoctorVisit = [
                 renderContent: props => input(props),
             },
             {
-                type: 'text',
+                type: 'number',
                 name: 'normalPressure',
                 placeholder: 'Звичайний тиск',
                 value: '',
@@ -55,7 +55,7 @@ export const inputDoctorVisit = [
         value: 'Therapist',
         content: [
             {
-                type: 'text',
+                type: 'number',
                 name: 'age',
                 placeholder: 'Вік',
                 value: '',

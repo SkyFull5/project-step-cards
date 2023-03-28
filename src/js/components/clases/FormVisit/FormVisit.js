@@ -9,6 +9,7 @@ export class FormVisit {
         this.params = params;
         this.modal = modal;
         this.formField = '';
+        this.status = params?.status;
     }
 
     renderElement() {
@@ -70,6 +71,8 @@ export class FormVisit {
             formField.creationTime = new Date().getTime();
             if (this.idForm === 'create-visit') {
                 formField.status = false;
+            } else {
+                formField.status = this.status;
             }
             this.formField = formField;
             this.modal.close();

@@ -8,6 +8,7 @@ export const HomePage = async () => {
     root.innerHTML += Main();
 
     const { res: allCard } = await fetchGetCard();
+    console.log(allCard);
 
     const cardContainer = document.querySelector('.cards-list');
     const paginationContainer = document.querySelector('.pagination-wrapper');

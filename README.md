@@ -1,65 +1,65 @@
-# 🚀 Step Project Cards
+# 🚀 Medicine Danit Dashboard
 
-**🎨 Прототип Дизайна:** [Макет](https://www.figma.com/file/bbqcxW6wiTwPXDPHjyfUwZ/Untitled?node-id=0-1)
+**🎨 Prototype Design:** [Layout](https://www.figma.com/file/bbqcxW6wiTwPXDPHjyfUwZ/Untitled?node-id=0-1)
 
-**🌐 Гитхаб пейджес:** [Проект](https://skyfull5.github.io/project-step-cards/)
+**🌐 GitHub Pages:** [Project](https://artemnadosha.github.io/project-step-cards/)
 
-## 🛠 Технологии которые мы использовали:
-- JavaScript: современный синтаксис, классы, шаблонные строки, деструктуризация объекта
-- HTML: структура страницы и элементы пользовательского интерфейса
-- SCSS: стилизация и оформление элементов
-- DOM: манипуляция элементами HTML через JavaScript
-- Axios: библиотека для отправки HTTP-запросов и обработки ответов
-- LocalStorage: хранение данных на стороне клиента
-- Асинхронность: использование async/await для управления асинхронными операциями
-- Модульная структура: организация кода через модули
-- Vite: инструмент для сборки проекта
+## 🛠 The technology we used:
+- JavaScript: modern syntax, classes, pattern strings, object destructuring
+- HTML: page structure and UI elements
+- SCSS: styling and design elements
+- DOM: manipulating HTML elements with JavaScript
+- Axios: A library for sending HTTP requests and processing responses
+- LocalStorage: storing data on the client side
+- Asynchronous: using async/await to control asynchronous operations
+- Module structure: organization of code in modules
+- Vite: a tool to build a project
 
-### 🧰 Сборщик Vite выполняет сборку проекта в режиме разработки, продашкена и превью, для запуска Vite есть 3 скрипта:
-- `vite` - режим разработчика
-- `vite build` - режим продашена
-- `vite preview` - режим превью
+### 🧰 The Vite builder builds the project in development mode, sellshken and preview mode, there are 3 scripts to run Vite:
+- `vite` - developer mode
+- `vite build` - vendor mode
+- `vite preview` - preview mode
 
-#### 🎯 Основные функции dev / build /preview:
+#### 🎯 Main functions dev / build /preview:
 **dev:**
-- Очищение папки dist и обновление файлов
-- Компиляция SCSS файлов в CSS
-- Отслеживание изменений в HTML, SCCS, JavaScript
-- Запуск сервера для остлеживания изменений в реальном времени
+- Clearing the dist folder and updating the files
+- Compiling SCSS files into CSS
+- Change tracking in HTML, SCCS, JavaScript
+- Run server to track changes in real time
 
 **build:**
-- Очищение папки dist и обновление файлов
-- Компиляция SCSS файлов в CSS
-- JavaScript компилируется с помощью Vite
-- Автоматическое добавление префиксов для поддержки нескольких версий разных браузеров
-- Минификация JavaScript и CSS файлов
-- Оптимизация картинок
+- Cleaning the dist folder and updating files
+- Compiling SCSS files into CSS
+- JavaScript compiled with Vite
+- Automatic addition of prefixes to support multiple browser versions
+- Minification of JavaScript and CSS files
+- Optimization of images
 
 **preview:**
-- Запуск сервера для предварительного просмотра собранного проекта (файлы из папки dist)
+- Running the server to preview the built project (files from the dist folder)
 
 
-## 👥 В проекте участовали:
-- Егор Осинский
-- Артем Надоша
-- Инга Чекаленко
+## 👥 The project involved:
+- Artem Nadosha
+- Yegor Osinski
+- Inga Chekalenko
 
-### Егор Осинский отвечал за:
-- Разработка класса Modal и его методов, для работы с модальными окнами
-- Разработка класса Card, который выводит информацию объектов в базовом виде
-- Функции вывода/редактирования информации - delete, edit, show-more
-- Рефакторинг
+### Egor Osinski was responsible for:
+- Development of the Modal class and its methods for modal windows
+- The development of the Card class, which displays the objects information in a basic form
+- Functions for displaying/editing information - delete, edit, show-more
+- Refactoring
 
-### Артем Надоша отвечал за:
-- Разработка прототипа дизайна
-- Попытка разделения обязанностей по проекту
-- Инит проекта с базовой структурой
-- Разработка класса FormVisit, который является универсальным для создания и редактирования
-- Разработка класса Search, который включает полную фильтрацию по сайту с предложенными вариантами, а так же корректное выполнение при пагинации
-- Пагинация
-- Сборка основного рендера всей страницы
+### Artem Nadosha was responsible for:
+- Design prototyping
+- Lead the team, divide responsibilities and build basic tasks, with click up
+- Project init with a basic structure
+- Development of the FormVisit class, which is universal for creation and editing
+- Development of Search class, which includes full site filtering with suggested variants, as well as correct pagination execution
+- Development of pagination and interaction with elements
+- Building the main render of the entire page
 
-### Инга Чекаленко отвечала за: 
-- Разработка Класса InfoVisit, который создает и отображает информацию о визите пациента к врачу, с учетом специализации врача и особенностей каждого визита.
-- Разработка Класса LoginForm, который создает и управляет формой входа для аутентификации пользователя и создание функции LoginPage, которая создает экземпляр формы входа и добавляет его на страницу.
+### Inga Chekalenko was responsible for:
+- Development of the InfoVisit Class, which creates and displays information about a patient's visit to the doctor, taking into account the doctor's specialty and the specifics of each visit.
+- Development of the LoginForm class, which creates and manages the login form for user authentication and creation of the LoginPage function, which creates an instance of the login form and adds it to the page.
  
